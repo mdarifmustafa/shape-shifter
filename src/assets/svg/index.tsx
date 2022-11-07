@@ -1,0 +1,1 @@
+export { default as ReactLogoSvg } from "./react_cdnlogo.svg";

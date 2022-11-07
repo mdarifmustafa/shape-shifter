@@ -1,0 +1,58 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 13,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "react",
+    "prettier",
+    "@typescript-eslint"
+  ],
+  "rules": {
+    "quotes": "off",
+    "prettier/prettier": [
+      "error",
+      {
+        "jsxSingleQuote": true,
+        "printWidth": "120",
+        "singleQuote": true,
+        "parser": "typescript",
+        "endOfLine": "auto"
+      }
+    ],
+    "no-unused-vars": "warn",
+    "require-jsdoc": "off",
+    "max-len": [
+      "warn",
+      120
+    ],
+    "react/prop-types": "off",
+    "no-console": "warn",
+    "prefer-const": "warn",
+    "camelcase": "off",
+    "react-hooks/rules-of-hooks": "off",
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/display-name": [
+      0,
+      {
+        "ignoreTranspilerName": true
+      }
+    ]
+  }
+}
