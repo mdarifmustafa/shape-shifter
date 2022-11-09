@@ -24,6 +24,11 @@ export const paths: Paths<ParentPaths> = {
     title: "",
     pathname: "",
     display: ""
+  },
+  detailed: {
+    title: "",
+    pathname: "",
+    display: ""
   }
 }
 

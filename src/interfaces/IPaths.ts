@@ -1,6 +1,6 @@
 import { RouteObject } from "react-router-dom";
 
-export type ParentPaths = 'login' | 'not_authorized' | 'page404' | 'home';
+export type ParentPaths = 'login' | 'not_authorized' | 'page404' | 'home' | 'detailed';
 
 export type ChildrenPaths = 'create';
 
