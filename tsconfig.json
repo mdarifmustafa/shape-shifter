@@ -24,6 +24,7 @@
       "@pages/*": ["./src/pages/*"],
       "@components": ["./src/components"],
       "@routes": ["./src/routes"],
+      "@workers": ["./src/workers"],
     }
   },
   "include": ["src"],

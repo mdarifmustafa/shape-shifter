@@ -14,8 +14,15 @@ import Stack from "@mui/joy/Stack"
 import Add from "@mui/icons-material/Add"
 import Typography from "@mui/joy/Typography"
 
+const getClipboardDefaultValue = () => {
+  return "this is a magnet url"
+}
+
 export const Header: FC = () => {
   const [inputOpen, setInputOpen] = useState<boolean>(false)
+  const [inputValue, setInputValue] = useState<string>(
+    getClipboardDefaultValue()
+  )
 
   const hideInputModal = () => {
     setInputOpen(false)
@@ -60,7 +67,18 @@ export const Header: FC = () => {
             }}
           >
             <Stack spacing={2}>
-              <TextField label="Name" autoFocus required />
+              <TextField
+                label="Name"
+                autoFocus
+                required
+                value={inputValue}
+                onChange={(e) => {
+                  setInputValue(e.target.value)
+                }}
+                style={{
+                  borderColor: "#fff",
+                }}
+              />
               <Button type="submit" variant="outlined">
                 Submit
               </Button>
