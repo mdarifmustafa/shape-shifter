@@ -23,5 +23,9 @@
 }
 
 .joyModalRoot:global(.JoyModalDialog-root) {
-  box-shadow: 2px 2px 2px 2px rgba(#005, 0.5);
+  box-shadow: -1px -1px 1px 1px rgba(#999, 0.5), 1px 1px 1px 1px rgba(#999, 0.5);
+}
+
+.joyInputRootClass:global(.JoyInput-root.Joy-focused) {
+  outline: none;
 }

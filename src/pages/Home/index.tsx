@@ -23,11 +23,7 @@ function TabPanel(props: TabPanelProps) {
       className={styles.tabPanelHeight}
       {...other}
     >
-      {value === index && (
-        <Box sx={{ p: 2 }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
+      {value === index && <Box sx={{ p: 2 }}>{children}</Box>}
     </div>
   )
 }

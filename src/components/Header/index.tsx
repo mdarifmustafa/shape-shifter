@@ -1,4 +1,4 @@
-import { FC, Fragment, useState } from "react"
+import { FC, Fragment, useState, useRef, useEffect } from "react"
 import styles from "./Header.module.scss"
 import { Grid, ClickAwayListener } from "@mui/material"
 import { MagnetLight } from "@assets/images"
@@ -14,19 +14,35 @@ import Stack from "@mui/joy/Stack"
 import Add from "@mui/icons-material/Add"
 import Typography from "@mui/joy/Typography"
 
-const getClipboardDefaultValue = () => {
-  return "this is a magnet url"
-}
+// const getClipboardDefaultValue = () => {
+//   return "http://torrent.unix-ag.uni-kl.de/"
+// }
 
 export const Header: FC = () => {
   const [inputOpen, setInputOpen] = useState<boolean>(false)
-  const [inputValue, setInputValue] = useState<string>(
-    getClipboardDefaultValue()
-  )
+  const [inputValue, setInputValue] = useState<string>("")
+
+  const dialogInputRef = useRef<HTMLInputElement>(null)
 
   const hideInputModal = () => {
     setInputOpen(false)
   }
+
+  const readClipboardText = async () => {
+    if (navigator) {
+      const text = await navigator.clipboard.readText()
+      if (typeof text === "string") {
+        setInputValue(text)
+      }
+    }
+  }
+
+  useEffect(() => {
+    if (inputOpen) {
+      // if (dialogInputRef.current) dialogInputRef.current.value = "some random value"
+      readClipboardText()
+    }
+  }, [inputOpen])
 
   const showMagnetInputDialog = () => {
     return (
@@ -77,7 +93,10 @@ export const Header: FC = () => {
                 }}
                 style={{
                   borderColor: "#fff",
+                  outline: "none",
                 }}
+                ref={dialogInputRef}
+                className={styles.joyInputRootClass}
               />
               <Button type="submit" variant="outlined">
                 Submit
