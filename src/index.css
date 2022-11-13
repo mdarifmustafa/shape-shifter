@@ -71,3 +71,14 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+div.JoyInput-root.Joy-focused:before {
+  box-shadow: none;
+}
+
+div.JoyInput-root.JoyInput-variantOutlined.JoyInput-colorNeutral.Joy-focused {
+  outline: none;
+  color: #006;
+  border-color: #fff;
+  background-color: #fff;
+}

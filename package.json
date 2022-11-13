@@ -41,7 +41,8 @@
     "react-router-dom": "^6.4.3",
     "styled-components": "^5.3.6",
     "uuid": "^9.0.0",
-    "webtorrent": "^1.9.1"
+    "webtorrent": "^1.9.2",
+    "worker-plugin": "^5.0.1"
   },
   "devDependencies": {
     "@types/node": "^18.11.9",
@@ -49,6 +50,8 @@
     "@types/react": "^18.0.22",
     "@types/react-dom": "^18.0.7",
     "@types/styled-components": "^5.1.26",
+    "@types/uuid": "^8.3.4",
+    "@types/worker-plugin": "^5.0.1",
     "@typescript-eslint/eslint-plugin": "^5.42.1",
     "@typescript-eslint/parser": "^5.42.1",
     "@vitejs/plugin-react": "^2.2.0",

@@ -6,7 +6,7 @@ interface StoreContextData {
   setPageView: any
   tabViewIndex: number
   setTabViewIndex: any
-  torrents: ITorrent
+  torrents: ITorrent[]
   setTorrents: any
 }
 

@@ -29,3 +29,10 @@
 .joyInputRootClass:global(.JoyInput-root.Joy-focused) {
   outline: none;
 }
+
+.joySubmitButton:global(.JoyButton-root.JoyButton-variantOutlined:hover) {
+  color: #006;
+  font-weight: bolder;
+  background-color: #fff;
+}
+

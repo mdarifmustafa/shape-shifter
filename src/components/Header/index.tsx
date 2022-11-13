@@ -1,4 +1,4 @@
-import { FC, Fragment, useState, useRef, useEffect } from "react"
+import { FC, Fragment, useState, useRef, useEffect, useContext } from "react"
 import styles from "./Header.module.scss"
 import { Grid, ClickAwayListener } from "@mui/material"
 import { MagnetLight } from "@assets/images"
@@ -11,8 +11,11 @@ import TextField from "@mui/joy/TextField"
 import Modal from "@mui/joy/Modal"
 import ModalDialog from "@mui/joy/ModalDialog"
 import Stack from "@mui/joy/Stack"
-import Add from "@mui/icons-material/Add"
 import Typography from "@mui/joy/Typography"
+import { StoreContext } from "@context"
+import { TorrentModel } from "@models"
+import { ITorrent } from "@interfaces/ITorrent"
+import { v4 as uuidv4 } from "uuid"
 
 // const getClipboardDefaultValue = () => {
 //   return "http://torrent.unix-ag.uni-kl.de/"
@@ -20,9 +23,13 @@ import Typography from "@mui/joy/Typography"
 
 export const Header: FC = () => {
   const [inputOpen, setInputOpen] = useState<boolean>(false)
-  const [inputValue, setInputValue] = useState<string>("")
+  const [inputValue, setInputValue] = useState<string>(
+    "http://torrent.unix-ag.uni-kl.de/"
+  )
 
   const dialogInputRef = useRef<HTMLInputElement>(null)
+
+  const { torrents, setTorrents } = useContext(StoreContext)
 
   const hideInputModal = () => {
     setInputOpen(false)
@@ -32,7 +39,7 @@ export const Header: FC = () => {
     if (navigator) {
       const text = await navigator.clipboard.readText()
       if (typeof text === "string") {
-        setInputValue(text)
+        // setInputValue(text)
       }
     }
   }
@@ -43,6 +50,20 @@ export const Header: FC = () => {
       readClipboardText()
     }
   }, [inputOpen])
+
+  const modalFormSubmit = () => {
+    const torrent: ITorrent = TorrentModel()
+    torrent.source_uid = uuidv4()
+    torrent.source_url = inputValue
+    torrent.source_expanded = false
+    torrent.source_date_added = new Date()
+
+    const newTorrents = [...torrents]
+    newTorrents.push(torrent)
+    setTorrents(newTorrents)
+
+    setInputOpen(false)
+  }
 
   const showMagnetInputDialog = () => {
     return (
@@ -79,26 +100,26 @@ export const Header: FC = () => {
           <form
             onSubmit={(event) => {
               event.preventDefault()
-              setInputOpen(false)
+              modalFormSubmit()
             }}
           >
             <Stack spacing={2}>
               <TextField
-                label="Name"
+                label="Magnet/Torrent URL"
                 autoFocus
                 required
                 value={inputValue}
                 onChange={(e) => {
                   setInputValue(e.target.value)
                 }}
-                style={{
-                  borderColor: "#fff",
-                  outline: "none",
-                }}
                 ref={dialogInputRef}
                 className={styles.joyInputRootClass}
               />
-              <Button type="submit" variant="outlined">
+              <Button
+                type="submit"
+                variant="outlined"
+                className={styles.joySubmitButton}
+              >
                 Submit
               </Button>
             </Stack>

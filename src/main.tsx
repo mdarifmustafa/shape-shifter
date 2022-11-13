@@ -1,11 +1,10 @@
-import React, { FC } from 'react'
-import ReactDOM from 'react-dom/client'
-import { BrowserRouter } from 'react-router-dom';
-import './index.css'
+import React, { FC } from "react"
+import ReactDOM from "react-dom/client"
+import "./index.css"
 //import { ReactLogo } from "@assets/svg";
-import { MainLayout, Loader } from '@components';
-import { RouterApp } from "@routes";
-import { Providers } from './context';
+import { MainLayout, Loader } from "@components"
+import { RouterApp } from "@routes"
+import { StoreProviders } from "./context"
 
 const App: FC = () => {
   return (
@@ -15,10 +14,10 @@ const App: FC = () => {
   )
 }
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <Providers>
+    <StoreProviders>
       <App />
-    </Providers>
+    </StoreProviders>
   </React.StrictMode>
 )
