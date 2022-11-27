@@ -11,5 +11,6 @@ const stream = (torrent: ITorrent) => {
 const tixati = (torrent: ITorrent) => stream(torrent)
 
 streamWorker.onmessage = (e: MessageEvent<ITorrent>) => {
+  console.log("tixati e.data is:", e.data)
   tixati(e.data)
 }

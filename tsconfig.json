@@ -16,7 +16,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "types": ["vite-plugin-svgr/client"],
+    "types": ["vite-plugin-svgr/client", "node"],
     "paths": {
       "@services/*": ["./src/services/*"],
       "@interfaces/*": ["./src/interfaces/*"],
@@ -29,8 +29,10 @@
       "@models": ["./src/models"],
       "@context": ["./src/context"],
       "@utils": ["./src/utils"],
+      "@types/*": ["./src/types/*"]
     }
   },
   "include": ["src"],
+  "exclude": ["node_modules",],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

@@ -1,5 +1,5 @@
 import { StoreContext } from "@context"
-import { FC, useEffect, useContext } from "react"
+import { FC, useEffect, useContext, useState } from "react"
 import { EnumTorrentStatus, ITorrent } from "@interfaces/ITorrent"
 
 interface StreamServiceProps {}
@@ -24,6 +24,10 @@ export const StreamService: FC<StreamServiceProps> = () => {
   const initWorker = (torrent: ITorrent) => {
     streamWorkerInstance.postMessage(torrent)
   }
+
+  useEffect(() => {
+  }, [])
+
 
   useEffect(() => {
     if (torrents.length) {

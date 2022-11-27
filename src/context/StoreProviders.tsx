@@ -29,25 +29,28 @@ export const StoreProviders: FC<ProvidersProps> = ({ children }) => {
   const [pageView, setPageView] = useState<string>("home")
   const [tabViewIndex, setTabViewIndex] = useState<number>(0)
   const [torrents, setTorrents] = useState<ITorrent[]>([])
+  const [searchValue, setSearchValue] = useState<string>("")
 
-  const buildProviderValue: StoreContextData = {
+  const buildProviderValues: StoreContextData = {
     pageView: pageView,
     setPageView: setPageView,
     tabViewIndex: tabViewIndex,
     setTabViewIndex: setTabViewIndex,
     torrents: torrents,
     setTorrents: setTorrents,
+    searchValue: searchValue,
+    setSearchValue: setSearchValue,
   }
 
   useEffect(() => {
-    console.log("torrents useEffects are:", torrents)
-  }, [torrents])
+    console.log("torrents useEffects are:", torrents, pageView)
+  }, [torrents, pageView])
 
   return (
     <Suspense fallback={<Loader />}>
       <QueryClientProvider client={queryClient}>
         <ConfigProvider direction={"ltr"}>
-          <StoreContext.Provider value={buildProviderValue}>
+          <StoreContext.Provider value={buildProviderValues}>
             <BrowserRouter>{children}</BrowserRouter>
             <StreamService />
             {import.meta.env.DEV && import.meta.env.VITE_ENABLE_DEVTOOL && (

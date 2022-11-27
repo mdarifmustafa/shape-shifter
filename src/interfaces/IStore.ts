@@ -8,6 +8,8 @@ interface StoreContextData {
   setTabViewIndex: any
   torrents: ITorrent[]
   setTorrents: any
+  searchValue: string
+  setSearchValue: any
 }
 
 export type { StoreContextData }

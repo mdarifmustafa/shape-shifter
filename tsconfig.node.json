@@ -3,7 +3,9 @@
     "composite": true,
     "module": "ESNext",
     "moduleResolution": "Node",
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "types": ["node", "webtorrent"],
+    "typeRoots": ["node_modules/@types"]
   },
   "include": ["vite.config.ts"]
 }
